@@ -25,3 +25,45 @@
  
  算法复杂度：  O(n²)
  
+```python
+'''选择排序'''
+def selection_sort(arr):
+    """选择排序"""
+    # 第一层for表示循环选择的遍数
+    for i in range(len(arr) - 1):
+        # 将起始元素设为最小元素
+        min_index = i
+        # 第二层for表示最小元素和后面的元素逐个比较
+        for j in range(i + 1, len(arr)):
+            if arr[j] < arr[min_index]:
+                # 如果当前元素比最小元素小，则把当前元素角标记为最小元素角标
+                min_index = j
+        # 查找一遍后将最小元素与起始元素互换
+        arr[min_index], arr[i] = arr[i], arr[min_index]
+    return arr
+```
+# -插入排序
+比较类算法，算法描述：
+* 选取未排序的元素，插入到已排序区间的合适位置，直到未排序区间为空
+
+算法复杂度为O（n²）
+```python
+'''插入排序'''
+def InsertSort(myList):
+    #获取列表长度
+    length = len(myList)
+    for i in range(1,length):
+        #设置当前值前一个元素的标识
+        j = i - 1
+        #如果当前值小于前一个元素,则将当前值作为一个临时变量存储,将前一个元素后移一位
+        if(myList[i] < myList[j]):
+            temp = myList[i]
+            myList[i] = myList[j]
+            #继续往前寻找,如果有比临时变量大的数字,则后移一位,直到找到比临时变量小的元素或者达到列表第一个元素
+            j = j-1
+            while j>=0 and myList[j] > temp:
+                myList[j+1] = myList[j]
+                j = j-1
+            #将临时变量赋值给合适位置
+            myList[j+1] = temp
+```
