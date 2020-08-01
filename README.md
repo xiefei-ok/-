@@ -42,6 +42,7 @@ def selection_sort(arr):
         arr[min_index], arr[i] = arr[i], arr[min_index]
     return arr
 ```
+
 # -插入排序
 比较类算法，算法描述：
 * 选取未排序的元素，插入到已排序区间的合适位置，直到未排序区间为空
@@ -66,4 +67,39 @@ def InsertSort(myList):
                 j = j-1
             #将临时变量赋值给合适位置
             myList[j+1] = temp
+```
+
+# -归并排序
+采用分治法，算法描述：
+* 将数组不断二分，直到最后每个部分都只包含一个数据
+* 然后对每个数据分别进行排序
+* 最后将排序好的相邻的两部分合并在一起，如此整个数组就是有序了
+
+算法复杂度为O（nlongn）
+```python
+'''归并排序'''
+def merge(a, b):
+    c = []
+    h = j = 0
+    while j < len(a) and h < len(b):
+        if a[j] < b[h]:
+            c.append(a[j])
+            j += 1
+        else:
+            c.append(b[h])
+            h += 1
+    if j == len(a):
+        for i in b[h:]:
+            c.append(i)
+    else:
+        for i in a[j:]:
+            c.append(i)
+    return c
+def merge_sort(lists):
+    if len(lists) <= 1:
+        return lists
+    middle = len(lists)//2
+    left = merge_sort(lists[:middle])
+    right = merge_sort(lists[middle:])
+    return merge(left, right)
 ```
